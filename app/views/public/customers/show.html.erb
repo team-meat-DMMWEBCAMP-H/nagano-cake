@@ -1,15 +1,21 @@
-<div class="container px-5 px-sm-0">
+<div class= "container">
   <div class="row">
-    <div class="col-md-6">
-      <h>マイページ</h1>
-      <p>登録情報</p><!--%= link_to "編集する", edit_customers_path(@customer) %-->
-      <!--<% @customer.each do |custimer| %>-->
-      <!--  <%= cutomer.first_name %>-->
-      <!--  <%= cutomer.last_name %>-->
-      <!--  <%= cutomer.first_name_kana %>-->
-      <!--  <%= cutomer.last_name_kana %>-->
-      <!--  <%= cutomer.zip_code %>-->
-      <!--  <%= cutomer.address %>-->
-      <!--  <%= cutomer.phone_number %>-->
-      <!--<% end %>-->
+      <div class="col-md-4">
+      <h1 class="bg-light">マイページ</h1>
     </div>
+    <div class="col-md-12">
+      <p>登録情報</p><%= link_to "編集する", customers_information_edit_path %>
+      <!--<!% @customer.each do |custimer| %>-->
+      <!--  <!%= cutomer.first_name %>-->
+      <!--  <!%= cutomer.last_name %>-->
+      <!--  <1%= cutomer.first_name_kana %>-->
+      <!--  <1%= cutomer.last_name_kana %>-->
+      <!--  <1%= cutomer.zip_code %>-->
+      <!--  <1%= cutomer.address %>-->
+      <!--  <1%= cutomer.phone_number %>-->
+      <!--<1% end %>-->
+      配送先<%= link_to "一覧を見る", shipping_addresses_path %>
+      注文履歴<%= link_to "一覧を見る", orders_path %>
+    </div>
+  </div>
+</div>

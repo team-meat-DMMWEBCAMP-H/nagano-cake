@@ -6,28 +6,15 @@
     </div>
     <div class="col-md-8 offset-md-1">
       <h1>商品一覧</h1>
-      <ul class="list-inline"><!--リスト横並びのクラス-->
-            <!--bookers2のインデックス-->
-        <!--<1% @books.each do |book| %>-->
-        <!--  <tbody>-->
-        <!--    <tr>-->
-        <!--      <td>-->
-        <!--        <1%= link_to user_path(book.user.id) do %>-->
-        <!--        <1%= image_tag book.user.get_profile_image(100,100) %>-->
-        <!--        <1% end %>-->
-        <!--      </td>-->
-        <!--      <td>-->
-        <!--        <1%= link_to book_path(book.id) do %>-->
-        <!--        <1%= book.title %>-->
-        <!--        <1% end %>-->
-        <!--      </td>-->
-        <!--      <td>-->
-        <!--        <1%= book.body %>-->
-        <!--      </td>-->
-        <!--    </tr>-->
-        <!--  </tbody>-->
-        <!--<1% end %>-->
-      </ul>
+        <% @items.each do |item| %>
+      <div class="cok-3 mt-3">
+        <!--%=link_to item_path(item) do %>
+          <!--%= image_tag item.get_profile_image(100,100),fallback: "no_image.jpg" %-->
+        <!--% end %><br-->
+        <strong class><%= item.name %></strong><br>
+        <span class=><%= item.price %>円</span><br>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
+    @items = Item.page(params[:page]).per(10)
   end
 
   def new
@@ -13,10 +14,21 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.page(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update
+    redirect_to admin_item_path(@item), notice: "変更が成功しました。"
+    else
+      render "edit"
+
+  private
 
   def item_params
     params.require(:item).permit(:genre_id, :name, :introduction, :price, :sale_status, :image)

@@ -10,4 +10,8 @@ class Customer < ApplicationRecord
          has_many :orders
         # 配送先とのアソシエーション(1対N)
          has_many :shipping_addresses,dependent: :destroy
+
+         def active_for_authentication?
+          super && (self.is_active == true)
+         end
 end

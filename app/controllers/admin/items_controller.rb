@@ -27,6 +27,8 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item), notice: "変更が成功しました。"
     else
       render "edit"
+    end
+  end
 
   private
 

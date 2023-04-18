@@ -15,6 +15,7 @@ class Public::CustomersController < ApplicationController
       redirect_to public_customer_my_page_path, notice: "変更が成功しました。"
     else
       render :edit
+    end
   end
 
   def check

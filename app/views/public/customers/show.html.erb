@@ -1,21 +1,63 @@
 <div class= "container">
   <div class="row">
       <div class="col-md-4">
-      <h1 class="bg-light">マイページ</h1>
-    </div>
+        <div class="bg-light">
+          <h3>マイページ</h3>
+        </div>
+      </div>
     <div class="col-md-12">
-      <p>登録情報</p><%= link_to "編集する", customers_information_edit_path %>
-      <!--<!% @customer.each do |custimer| %>-->
-      <!--  <!%= cutomer.first_name %>-->
-      <!--  <!%= cutomer.last_name %>-->
-      <!--  <1%= cutomer.first_name_kana %>-->
-      <!--  <1%= cutomer.last_name_kana %>-->
-      <!--  <1%= cutomer.zip_code %>-->
-      <!--  <1%= cutomer.address %>-->
-      <!--  <1%= cutomer.phone_number %>-->
-      <!--<1% end %>-->
-      配送先<%= link_to "一覧を見る", shipping_addresses_path %>
-      注文履歴<%= link_to "一覧を見る", orders_path %>
+      <div class="d-flex">
+        <h4 class="btn mx-md-4">登録情報</h4>
+        <%= link_to "編集する", customers_information_edit_path,class: "btn mx-md-4 btn-success" %>
+      </div>
+      <!--% @customer.each do |customer| %-->
+      <table class="table table-bordered">
+        <thead>
+        　<tr>
+          　<td class="table-active text-center" style="width: 40%">氏名</td>
+          　<td><!--%= cutsomer.first_name+cutsomer.last_name %--></td>
+        　</tr>
+      　</thead>
+
+        <thead>
+          <tr>
+            <td class="table-active text-center">カナ</td>
+            <td><!--%= cutsomer.first_name_kana+cutsomer.last_name_kana %--></td>
+          </tr>
+        </thead>
+
+        <thead>
+          <tr>
+            <td class="table-active text-center">郵便番号></td>
+            <td><!--%= cutsomer.zip_code %--></td>
+          </tr>
+        </thead>
+
+        <thead>
+          <tr>
+            <td class="table-active text-center">住所</td>
+            <td><!--%= cutsomer.address %--></td>
+          </tr>
+        </thead>
+
+        <thead>
+          <tr>
+            <td class="table-active text-center">電話番号</td>
+            <td><!--%= cutsomer.phone_number %--></td>
+          </tr>
+        </thead>
+      　<!--% end %-->
+
+      </table>
+
+      <p>配送先　<%= link_to "一覧を見る", shipping_addresses_path, class: "btn  mx-md-4 btn-primary" %></p>
+      <p>注文履歴<%= link_to "一覧を見る", orders_path, class: "btn mx-md-4 btn-primary" %></p>
     </div>
   </div>
 </div>
+
+
+
+
+
+

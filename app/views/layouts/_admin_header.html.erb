@@ -1,9 +1,15 @@
-<div class= "container py-4">
-   <a class= "text-dark border border-dark col-sm-2 text-center py-2" href="/"><span>LOGO</span></a>
-   <p class= "text-right">
-     <%= link_to "商品一覧", admin_items_path,class: 'btn btn-light text-dark' %>
-     <%=  link_to "会員一覧", admin_customers_path,class: 'btn btn-light text-dark' %>
-     <%=  link_to "注文履歴一覧", admin_orders_path ,class: 'btn btn-light text-dark' %>
-     <%= link_to "ジャンル一覧", admin_genres_path, method: :delete,class: 'btn btn-light text-dark' %>
-   </p>
+<div class= "container border bg-secondary">
+  <div class="row">
+    <div class="col-md-3 mt-5 mb-3">
+      <a class= "text-dark bg-light border border-dark bg col-sm-2 text-center py-2" href="/admin"><span>LOGO</span></a>
+    </div>
+    <div class="col-md-9 text-right mt-3 mb-5">
+      <p>
+        <%= link_to "商品一覧", admin_items_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%=  link_to "会員一覧", admin_customers_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%=  link_to "注文履歴一覧", admin_orders_path ,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ジャンル一覧", admin_genres_path, method: :delete,class: 'border border-dark btn btn-light text-dark' %>
+      </p>
+    </div>
+  </div>
 </div>

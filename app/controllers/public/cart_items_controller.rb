@@ -14,4 +14,10 @@ class Public::ItemsController < ApplicationController
   params.require(:items).permit(:genre_id,:name,:introduction,:price,:item_image)
   end
 
+<<<<<<< HEAD
 end
+=======
+
+
+end
+>>>>>>> 04917b26690084a07cc18360e97530cfde50b5a2

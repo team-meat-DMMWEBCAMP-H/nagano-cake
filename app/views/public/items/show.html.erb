@@ -1,45 +1,23 @@
 <div class='container'>
+  <div class='row'>
+    <div class='col-xl-3 offset-xl-3'>itemのimage</div>
 
- <div class='row'>
+    <div class='col-xl-5 offset-xl-1'>
+      itemのname
+      itemのintroduction
+      itemのprice x 消費税率
+      個数選択のドロップダウン
+      カートに入れるボタン
+    </div>
 
-  <div class='col-xl-3 offset-xl-3'>itemのimage</div>
-
-
-
-  <div class='col-xl-5 offset-xl-1'>
-
-   itemのname
-
-   itemのintroduction
-
-   itemのprice x 消費税率
-
-   個数選択のドロップダウン
-
-   カートに入れるボタン
-
-  </div>
-
-
-
-  <% if @item.sale_status == true %>
-
-  <!--#商品販売中の場合-->
-
- <%= form_with(model: @cart_item,url: cart_items_path, local: true)do |f| %>
-
-  <%= f.label :quantity, "個数選択" %>
-
-  <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-
-  <%= f.hidden_field :item_id, :value => @item.id %>
-
-   <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
-
-   <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
-
-  <%= f.submit "カートに入れる" %>
-
- <% end %>
-
+    <% if @item.sale_status == true %>
+    <!--#商品販売中の場合-->
+  <%= form_with(model: @cart_item,url: cart_items_path, local: true)do |f| %>
+   <%= f.label :quantity, "個数選択" %>
+    <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+   <%= f.hidden_field :item_id, :value => @item.id %>
+     <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
+     <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
+   <%= f.submit "カートに入れる" %>
+  <% end %>
 <% end %>

@@ -1,68 +1,34 @@
 <div class= "container">
+  <div class= "row">
+    <h3 class= "col-lg-5 offset-lg-1 bg-light text-center">ショッピングカート</h3>
+    <div class='col-lg-2 offset-lg-4 text-center btn btn-danger'>カート内を空にする</div>
 
- <div class= "row">
+    <table class= "table table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
 
-  <h3 class= "col-lg-5 offset-lg-1 bg-light text-center">ショッピングカート</h3>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <th><%= cart_item.item.name %></th>
+          <th><%= cart_item.item.price %></th>
+          <th><%= cart_item.quantity %></th>
+          <th>
+            <% subtotal = (cart_item.item.price*cart_item.quantity).to_i %>
+            <%= subtotal %></th>
+          <th class='btn btn-danger'>削除する</th>
+        </tr>
+        <% end %>
+      </tbody>
 
-  <div class='col-lg-2 offset-lg-4 text-center btn btn-danger'>カート内を空にする</div>
-
-
-
-  <table class= "table table-bordered">
-
-   <thead class="bg-light">
-
-    <tr>
-
-     <th>商品名</th>
-
-     <th>単価(税込)</th>
-
-     <th>数量</th>
-
-     <th>小計</th>
-
-     <th></th>
-
-    </tr>
-
-   </thead>
-
-
-
-   <tbody>
-
-    <% @cart_items.each do |cart_item| %>
-
-    <tr>
-
-     <th><%= cart_item.item.name %></th>
-
-     <th><%= cart_item.item.price %></th>
-
-     <th><%= cart_item.quantity %></th>
-
-     <th>
-
-      <% subtotal = (cart_item.item.price*cart_item.quantity).to_i %>
-
-      <%= subtotal %></th>
-
-     <th class='btn btn-danger'>削除する</th>
-
-    </tr>
-
-    <% end %>
-
-   </tbody>
-
-
-
- </div>
-
-
-
+  </div>
 
 
 </div>
-

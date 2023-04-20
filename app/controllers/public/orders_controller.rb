@@ -4,7 +4,8 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @addresses = current_customer.addresses.all
+    @customer = Customer.find(current_customer.id)
+    @addresses = current_customer.address
   end
 
   def complete

@@ -1,17 +1,14 @@
-class Public::ItemsController < ApplicationController
+class Public::CartItemsController < ApplicationController
+    # before_action :authenticate_customer!
+    before_action :set_cart_item, only: [:increase, :decrease, :destroy]
+
   def index
-    @items = Item.all.order(created_at: :desc)#新しい順の商品一覧
-  end
-
-  def show
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.new
+    @cart_items = current_customer.cart_items.all
   end
 
 
-  private
-  def item_params
-  params.require(:items).permit(:genre_id,:name,:introduction,:price,:item_image)
+  def create
+    @cart_item = current_
   end
 
 end

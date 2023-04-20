@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
 
 >>>>>>> 29c80d4a76569bc1029778be5531a30e6656401f
   def index
-    @items = Item.all.order(created_at: :desc)#新しい順の商品一覧
+    @items = Item.all.order(created_at: :desc)#新しい順の商品一覧a
   end
 
   def show

@@ -40,7 +40,13 @@ Rails.application.routes.draw do
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
 
-    resources :cart_items, only: [:index, :update, :destroy]
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      member do
+        patch 'increase'
+        patch 'decrease'
+      end
+    end
+
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
     resources :orders, only: [:new, :create, :index, :show]

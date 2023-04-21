@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
   # ↓ログイン済みの顧客のみにアクセスを許可　確認できないため現在はコメントアウト
-  # before_action :authenticate_customer!
+  before_action :authenticate_customer!
 
   def new
     @order = Order.new
-    @addresses = current_customer.addresses.all
+    @addresses = Customer.select('address')
   end
 
   def complete

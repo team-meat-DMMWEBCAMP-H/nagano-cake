@@ -10,7 +10,7 @@
         <% @items.each do |item| %>
       <div class="d-flex mt-2">
         <%=link_to item_path(item) do %>
-          <%= image_tag @item.get_image, size:"100x100" %>
+          <%= image_tag item.get_image, size:"100x100" %>
         <% end %><br>
         <strong class><%= item.name %></strong><br>
         <span class=><%= item.price %>円</span><br>

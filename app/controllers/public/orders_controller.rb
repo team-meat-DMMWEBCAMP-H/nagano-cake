@@ -41,7 +41,7 @@ class Public::OrdersController < ApplicationController
   # 注文情報保存
   def create
         @order = Order.new(order_params)
-        @order.customer_id = current_member.id
+        @order.customer_id = current_customer.id
         @order.save
 
         current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
@@ -58,6 +58,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.page(params[:page]).per(10)
   end
 
   def show

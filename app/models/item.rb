@@ -13,4 +13,8 @@ class Item < ApplicationRecord
   def get_image
     (item_image.attached?) ? item_image : 'no-image.jpg'
   end
+  
+  def with_tax_price
+    add_tax_price.to_s(:delimited)
+  end
 end

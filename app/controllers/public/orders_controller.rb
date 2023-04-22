@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
        @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
-        ship = current_customer.shipping_addresses.all
+        ship = ShippingAddress.find(params[:order][:customer_id])
         @order.zip_code = ship.zip_code
         @order.address = ship.address
         @order.name = ship.name
@@ -62,6 +62,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+     @order = Order.find(params[:id])
+     @order_details = @order.order_details
   end
 
   private

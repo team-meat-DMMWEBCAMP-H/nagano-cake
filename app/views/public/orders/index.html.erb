@@ -25,16 +25,19 @@
               <%=order.name %>
             </td>
             <td>
-              <%=order.item.mane %>
+              <% order.order_details.each do |i| %>
+                <%= i.item.name %><br>
+              <% end %>
+              <!--%=order.item.mane %-->
             </td>
             <td>
               <%= order.billing_amount %>円
             </td>
             <td>
-              <%= order.arder_status_i18n %>
+              <%= order.status %>
             </td>
             <td>
-              <%= link_to "教示する", order_path(order.id),class: "btn  mx-md-4 btn-primary" %>
+              <%= link_to "表示する", order_path(order.id),class: "btn  mx-md-4 btn-primary" %>
             </td>
           </tr>
           <% end %>

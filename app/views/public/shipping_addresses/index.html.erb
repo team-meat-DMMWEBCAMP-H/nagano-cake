@@ -1,7 +1,7 @@
 <div class= "container">
   <h2>配送先登録 / 一覧</h2>
   <div class="row">
-    <%= form_with(model: @shipping_address, url: public_shipping_addresses_path) do |f| %>
+    <%= form_with model: @shipping_address, url: shipping_addresses_path, method: :post do |f| %>
       <table class="table table-borderless">
         <tr>
           <td>郵便番号(ハイフンなし)</td>
@@ -14,7 +14,7 @@
         <tr>
           <td>宛名</td>
           <td><%= f.text_field :name, placeholder: "令和道子" %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-sm-success" %></td>
+          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
         </tr>
       </table>
     <% end %>
@@ -44,6 +44,6 @@
       <% end %>
       </tbody>
     </table>
-    <div class="mx-auto"><%= paginate @addresses %></div>
+    <div class="mx-auto"><%= paginate @shipping_addresses %></div>
   </div>
 </div>

@@ -3,8 +3,9 @@ class Public::ShippingAddressesController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @shipping_addresses = current_customer.shipping_addresses
-    @shipping_address = ShippingAddress.new
+    @customer = current_customer
+    @shipping_addresses = @customer.shipping_addresses.page(params[:page])
+    @shipping_address = @customer.shipping_addresses.build
   end
 
   def create

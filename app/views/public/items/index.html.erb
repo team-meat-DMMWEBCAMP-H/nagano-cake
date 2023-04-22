@@ -5,8 +5,10 @@
       <!--%= render ジャンル検索 %-->
     </div>
     <div class="col-md-10 mt-3">
+    <div class="d-flex">
       <h4>商品一覧</h4>
-        <p>(全<%= @items.count %>件)</p>
+      <p class="mt-1">(全<%= @items.count %>件)</p>
+    </div>
         <div class="card-deck">
           <% @items.each do |item| %>
           <div class="col-md-3">

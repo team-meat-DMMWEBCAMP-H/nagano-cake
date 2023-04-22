@@ -10,10 +10,10 @@
         <h5 class='font-weight-bold'>支払方法</h5>
         <!--font-weight-boldは「太字」のクラス-->
         <p>
-        <%=  f.radio_button :payment_method, "credit_card", checked: "checked" %>
+        <%=  f.radio_button :payment_method, "クレジットカード", checked: "checked" %>
         <%= f.label :payment_method,"クレジットカード" %>
         <br>
-        <%= f.radio_button :payment_method, "transfer" %>
+        <%= f.radio_button :payment_method, "銀行振込" %>
         <%= f.label :payment_method, "銀行振込" %>
         </p>
 
@@ -30,7 +30,7 @@
           <%= f.radio_button :address_option,1 %>
           <%= f.label :order_address, "登録先住所から選択" %>
         <br>
-          <%= f.collection_select :customer_id,@addresses, :id, :address %>
+          <%= f.collection_select :customer_id,@addresses, :id,:full_address %>
         <br>
           <%= f.radio_button :address_option, 2 %>
           <%= f.label :order_address, "新しいお届け先" %>

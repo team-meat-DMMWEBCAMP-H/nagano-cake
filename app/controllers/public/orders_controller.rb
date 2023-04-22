@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @addresses = Customer.select('address')
+    @addresses = current_customer.shipping_addresses.all
   end
 
   def complete
@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
        @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
-        ship = Customer.select('address')
+        ship = current_customer.shipping_addresses.all
         @order.zip_code = ship.zip_code
         @order.address = ship.address
         @order.name = ship.name

@@ -1,2 +1,41 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-11">
+      <h4 class= "m-3 w-25 bg-light text-center">注文履歴詳細</h4>
+      <p>購入者　　　　　　<%=link_to @customer.last_name + " " + @customer.first_name,admin_root_path, class: "text-dark" %></p>
+      <p>注文日　　　　　　<%= @order.created_at.strftime('%Y/%m/%d') %></p>
+      <p>配送先　　　　　　〒<%= @order.zip_code %>　<%= @order.address %></p>
+      <p>　　　　　　　　　<%= @order.name %></p>
+      <p>支払い方法　　　　<%= @order.payment_method %></p>
+
+      <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
+      <p>注文ステータス　　<%= f.select :order_status,Order.statuses.keys, class:"status" %>
+         <%= f.submit "更新", class: "btn btn-sm btn-success" %></p>
+      <% end %>
+      <table class= "table table-hover table-inverse">
+        <thead>
+          <tr class= "bg-light">
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @details.each do |f| %>
+          <tr>
+            <td><%= f.item.name %></td>
+            <td><%= f.item.price %></td>
+            <td><%= f.quantity %></td>
+            <td><%= (f.item.price*f.quantity*1.1).to_i %></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

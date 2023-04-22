@@ -14,30 +14,30 @@
           </tr>
         </thead>
         <tbody>
-          <!--% @orders.each do |order| %-->
+          <% @orders.each do |order| %>
           <tr>
             <td>
-              <!--%= order.created_at.strftime('%Y/%m/%d') %-->
+              <%= order.created_at.strftime('%Y/%m/%d') %>
             </td>
             <td>
-              〒<!--%=order.zip_code %><br>
-              <!--%=order.address %><br>
-              <!--%=order.name %-->
+              〒<%=order.zip_code %><br>
+              <%=order.address %><br>
+              <%=order.name %>
             </td>
             <td>
-              <アイテム名呼び出し>
+              <%=order.item.mane %>
             </td>
             <td>
-              <!--%= order.billing_amount %-->円
+              <%= order.billing_amount %>円
             </td>
             <td>
-              <!--%= order.arder_status_i18n %-->
+              <%= order.arder_status_i18n %>
             </td>
             <td>
-              <!--%= link_to "教示する" order_path(order.id),class: "btn  mx-md-4 btn-primary" %-->
+              <%= link_to "教示する", order_path(order.id),class: "btn  mx-md-4 btn-primary" %>
             </td>
           </tr>
-          <!--% end %-->
+          <% end %>
         </tbody>
       </table>
     </div>

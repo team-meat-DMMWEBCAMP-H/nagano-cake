@@ -24,16 +24,19 @@
           </tr>
         </thead>
         <tbody>
-          <% @details.each do |f| %>
+          <% @details.each do |detail| %>
           <tr>
-            <td><%= f.item.name %></td>
-            <td><%= f.item.price %></td>
-            <td><%= f.quantity %></td>
-            <td><%= (f.item.price*f.quantity*1.1).to_i %></td>
-            <td></td>
-            <td></td>
+            <td><%= detail.item.name %></td>
+            <td><%= detail.item.price %></td>
+            <td><%= detail.quantity %></td>
+            <td><%= (detail.item.price*detail.quantity*1.1).to_i %></td>
+            <%= form_with model: detail, url: admin_order_path(detail), method: :patch do |f| %>
+            <td><%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %></td>
+            <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
+                <% end %>
           </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>

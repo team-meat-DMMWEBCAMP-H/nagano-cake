@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @addresses = Customer.select('address')
+    @addresses = current_customer.shipping_addresses.all
   end
 
   def complete
@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
        @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
-        ship = Customer.select('address')
+        ship = ShippingAddress.find(params[:order][:customer_id])
         @order.zip_code = ship.zip_code
         @order.address = ship.address
         @order.name = ship.name
@@ -41,7 +41,7 @@ class Public::OrdersController < ApplicationController
   # 注文情報保存
   def create
         @order = Order.new(order_params)
-        @order.customer_id = current_member.id
+        @order.customer_id = current_customer.id
         @order.save
 
         current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
@@ -58,9 +58,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.page(params[:page]).per(10)
   end
 
   def show
+     @order = Order.find(params[:id])
+     @order_details = @order.order_details
   end
 
   private

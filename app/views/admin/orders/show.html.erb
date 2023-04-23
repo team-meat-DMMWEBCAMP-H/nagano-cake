@@ -7,7 +7,6 @@
       <p>配送先　　　　　　〒<%= @order.zip_code %>　<%= @order.address %></p>
       <p>　　　　　　　　　<%= @order.name %></p>
       <p>支払い方法　　　　<%= @order.payment_method %></p>
-
       <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
       <p>注文ステータス　　<%= f.select :order_status,Order.statuses.keys, class:"status" %>
          <%= f.submit "更新", class: "btn btn-sm btn-success" %></p>

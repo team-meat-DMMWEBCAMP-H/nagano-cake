@@ -26,7 +26,7 @@ class Admin::OrdersController < ApplicationController
       #  参考記事 https://qiita.com/yumaon/items/e70e01851d35fe865629
   end
   redirect_to request.referer
-end
+  end
 
 private
   def order_params

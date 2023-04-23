@@ -25,7 +25,7 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer = current_customer
     # is_activeカラムをtrueに変更することにより削除フラグを立てる
-    @customer.update(is_active: true)
+    @customer.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path

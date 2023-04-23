@@ -45,7 +45,6 @@ Rails.application.routes.draw do
     delete 'cart_item/destroy_all' => 'cart_items#destroy_all'
 
     resources :orders, only: [:new, :create, :index, :show]
-    get 'order/confirm' => 'orders#confirm'
     post 'order/confirm' => 'orders#confirm'
     # ↓URLをorders/completeからorder/completeに変更しました
     get 'order/complete' => 'orders#complete'

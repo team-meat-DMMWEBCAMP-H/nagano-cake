@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     #get 'items/edit'
     #get 'homes/top'
   end
+  
 
   #public
   scope module: :public do

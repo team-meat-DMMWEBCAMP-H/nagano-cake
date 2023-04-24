@@ -7,10 +7,11 @@
       <p>配送先　　　　　　〒<%= @order.zip_code %>　<%= @order.address %></p>
       <p>　　　　　　　　　<%= @order.name %></p>
       <p>支払い方法　　　　<%= @order.payment_method %></p>
-      <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
-      <p>注文ステータス　　<%= f.select :order_status,Order.statuses.keys, class:"status" %>
-         <%= f.submit "更新", class: "btn btn-sm btn-success" %></p>
-      <% end %>
+      <p><%= form_with model:@order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
+  　　注文ステータス　　<%= f.select :status,Order.statuses.keys, class:"status" %>
+  　　<%= f.submit "更新", class: "btn btn-am btn-success" %>
+　　　<% end %></p>
+
       <table class= "table table-hover table-inverse">
         <thead>
           <tr class= "bg-light">
@@ -29,9 +30,9 @@
             <td><%= detail.item.price %></td>
             <td><%= detail.quantity %></td>
             <td><%= (detail.item.price*detail.quantity*1.1).to_i %></td>
-            <%= form_with model: detail, url: admin_order_path(detail), method: :patch do |f| %>
-            <td><%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %></td>
-            <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
+            <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch,  local: true do |f| %>
+            <%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %>
+            <%= f.submit "更新", class: "btn btn-sm btn-success" %>
                 <% end %>
           </tr>
           <% end %>

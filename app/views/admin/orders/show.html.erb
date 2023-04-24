@@ -1,6 +1,6 @@
 <div class= "container">
   <div class= "row">
-    <div class= "col-11">
+    <div class= "col-7">
       <h4 class= "m-3 w-25 bg-light text-center">注文履歴詳細</h4>
       <p>購入者　　　　　　<%=link_to @customer.last_name + " " + @customer.first_name,admin_root_path, class: "text-dark" %></p>
       <p>注文日　　　　　　<%= @order.created_at.strftime('%Y/%m/%d') %></p>
@@ -8,10 +8,11 @@
       <p>　　　　　　　　　<%= @order.name %></p>
       <p>支払い方法　　　　<%= @order.payment_method %></p>
       <p><%= form_with model:@order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
-  　　注文ステータス　　<%= f.select :status,Order.statuses.keys, class:"status" %>
+      注文ステータス　　<%= f.select :status,Order.statuses.keys, class:"status" %>
   　　<%= f.submit "更新", class: "btn btn-am btn-success" %>
 　　　<% end %></p>
-
+　　</div>
+    <div class= "col-7">
       <table class= "table table-hover table-inverse">
         <thead>
           <tr class= "bg-light">
@@ -31,14 +32,22 @@
             <td><%= detail.quantity %></td>
             <td><%= (detail.item.price*detail.quantity*1.1).to_i %></td>
             <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch,  local: true do |f| %>
-            <%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %>
-            <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+            <td><%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %></td>
+            <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
                 <% end %>
           </tr>
           <% end %>
-
         </tbody>
       </table>
+    </div>
+    <div class = "col-3 offset-1">
+      <% subtotal = 0 %>
+      <% @details.each do |detail| %>
+        <% subtotal += (detail.tax_price * detail.quantity) %>
+      <% end %>
+        <p>商品金額　　　　　¥ <%= subtotal.floor.to_s(:delimited) %></p>
+        <p>送料　　　　　　　¥ <%= postage = 800.to_s %></p>
+      <h5>請求金額合計　¥ <%= (@order.billing_amount).to_s(:delimited) %></h5>
     </div>
   </div>
 </div>

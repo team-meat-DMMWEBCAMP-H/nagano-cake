@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "homes#top"
     resources :orders, only: [:index, :show, :update,]
+    resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :update, :create]
     resources :items, only: [:index, :new, :show, :edit, :update, :create]
@@ -26,7 +27,7 @@ Rails.application.routes.draw do
     #get 'items/edit'
     #get 'homes/top'
   end
-  
+
 
   #public
   scope module: :public do
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
     #resources :customers, only: [:show, :edit, :update]
     get 'customers/my_page' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
-    patch 'customers/information' => 'customers#update'
+    patch 'customers/my_page' => 'customers#update'
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
 

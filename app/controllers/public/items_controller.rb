@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all.order(created_at: :desc)#新しい順の商品一覧
+    @items = Item.all.order(created_at: :desc).page(params[:page]).per(10)#新しい順の商品一覧
+    @item = Item.all
   end
 
   def show

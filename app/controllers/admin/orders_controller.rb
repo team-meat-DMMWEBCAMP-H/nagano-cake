@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @details = OrderDetail.where(order_id: params[:id])
     if @order.update(order_params)
-      @details.update_all(production_status: 1)if @order.status == "製作中"
+      @details.update_all(production_status: 1)if @order.status == "入金確認"
     end
       redirect_to admin_order_path(@order)
   end

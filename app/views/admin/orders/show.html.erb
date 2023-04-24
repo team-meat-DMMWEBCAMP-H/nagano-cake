@@ -30,9 +30,9 @@
             <td><%= detail.item.price %></td>
             <td><%= detail.quantity %></td>
             <td><%= (detail.item.price*detail.quantity*1.1).to_i %></td>
-            <%= form_with model: detail, url: admin_order_path(detail), method: :patch,  local: true do |f| %>
-            <td><%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %></td>
-            <td><%= f.submit "更新", class: "btn btn-sm btn-success" %></td>
+            <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch,  local: true do |f| %>
+            <%= f.select :production_status, OrderDetail.production_statuses.keys, class:"status" %>
+            <%= f.submit "更新", class: "btn btn-sm btn-success" %>
                 <% end %>
           </tr>
           <% end %>

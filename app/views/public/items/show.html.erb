@@ -1,0 +1,22 @@
+<div class='container'>
+  <div class='row'>
+      <div class='col-lg-2 offset-lg-1'></div>
+    <div class='col-lg-3'><%= image_tag @item.get_image, size:"300x200" %></div>
+
+    <div class='col-lg-5 offset-lg-1'>
+     <h4><%= @item.name %></h4>
+      <p><%= @item.introduction %></p>
+      <p>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</p>
+   <% if @item.sale_status == true %>
+    <!--#商品販売中の場合-->
+   <%= form_with(model: @cart_item,url: cart_items_path, local: true)do |f| %>
+   <%= f.label :quantity, "個数選択" %>
+   <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+   <%= f.hidden_field :item_id, :value => @item.id %>
+     <!--#第一引数にオブジェクト名item_id、第二引数部分にvalueで受け渡す値 @item.idを指定-->
+     <!--#cartitem controllerの cart_items.find_by(item_id:に送ることができる-->
+   <%= f.submit "カートに入れる",class: 'btn btn-success' %>
+  <% end %>
+<% end %>
+    </div>
+

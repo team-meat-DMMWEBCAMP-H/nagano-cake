@@ -1,0 +1,31 @@
+<div class="container">
+ <div class= "row">
+  <div class= "col-lg-1"></div>
+  <div class= "col-lg-4">
+    <h4 class="bg-light">管理者ログイン</h4>
+  </div>
+  </div>
+  <div class= "row">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-10">
+    <%= form_with model: @admin, url: admin_session_path do |f| %>
+    <table class="table table-borderless">
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= f.email_field :email, autofocus: true, size: 50, autocomplete: "email",placeholder:"example@mail.com" %></td>
+    </tr>
+
+      <tr>
+        <td>パスワード</td>
+        <td><%= f.password_field :password, size: 50, autocomplete: "current-password",placeholder:"6桁以上の英数字" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "ログイン",class: "btn btn-primary" %></td>
+      </tr>
+  </div>
+    </table>
+    <% end %>
+        <%= render "admin/shared/links" %>
+  </div>
+</div>

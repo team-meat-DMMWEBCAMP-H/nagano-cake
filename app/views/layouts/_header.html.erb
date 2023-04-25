@@ -1,0 +1,35 @@
+<div class= "container-fluid bg-secondary">
+  <div class="row">
+    <div class="col-md-3 mt-5 mb-3">
+
+      <%= link_to root_path do %>
+  <i class="fas fa-thermometer fa-4x" style="color: #ffffff"></i>
+      <% end %>
+
+
+
+    </div>
+    <div class="col-md-9 text-right mt-3 mb-5">
+      <p>
+      <% if admin_signed_in? %>
+        <%= link_to "商品一覧", admin_items_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%=  link_to "会員一覧", admin_customers_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%=  link_to "注文履歴一覧", admin_orders_path ,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ジャンル一覧", admin_genres_path ,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+      <% elsif customer_signed_in? %>
+        <h3 class="text-left text-white">ようこそ<%=current_customer.last_name %>さん!</h3>
+        <%= link_to "マイページ", customers_my_page_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "商品一覧", items_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "カート", cart_items_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'border border-dark btn btn-light text-dark' %>
+      <% else %>
+        <%= link_to "About", about_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "商品一覧", items_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "新規登録", new_customer_registration_path,class: 'border border-dark btn btn-light text-dark' %>
+        <%= link_to "ログイン", new_customer_session_path,class: 'border border-dark btn btn-light text-dark' %>
+      <% end %>
+      </p>
+    </div>
+  </div>
+</div>
